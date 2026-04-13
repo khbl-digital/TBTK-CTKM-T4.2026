@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Dashboard Ưu Đãi PNJ Online - Tháng 04/2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,6 +29,11 @@
             font-family: 'Montserrat', sans-serif;
         }
 
+        html, body {
+            max-width: 100vw;
+            overflow-x: hidden; /* Ngăn chặn trình duyệt zoom out do phần tử con tràn viền */
+        }
+
         body {
             background-color: #f0f5fa;
             background-image: linear-gradient(180deg, #d3e4f3 0%, #ffffff 800px);
@@ -37,7 +42,6 @@
             color: var(--text-main);
             line-height: 1.6;
             min-height: 100vh;
-            overflow-x: hidden;
         }
 
         h1, h2, h3, .offer-title, .huge-discount, .header-title {
@@ -239,6 +243,12 @@
         .split-layout { display: grid; grid-template-columns: 2.3fr 1.1fr; gap: 25px; align-items: start; margin-bottom: 40px; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 40px; }
 
+        /* Sửa lỗi Grid blowout trên Mobile */
+        .split-layout > div, .grid-2 > div {
+            min-width: 0; /* Thuộc tính cực kỳ quan trọng để Grid con không ép bể Grid cha */
+            max-width: 100%;
+        }
+
         /* Responsive Table Container */
         .table-responsive {
             width: 100%;
@@ -273,7 +283,7 @@
             width: 100%;
             border-collapse: collapse;
             background-color: #ffffff;
-            min-width: 600px; /* Ensure table doesn't squish too much on mobile */
+            min-width: 600px; /* Bắt buộc bảng có chiều ngang tối thiểu để đọc được chữ */
         }
         .promo-table th {
             background-color: #002244;
@@ -425,17 +435,17 @@
             main { padding: 0 10px 40px; }
             .tabs-container { padding: 0 10px; }
             
-            /* Cập nhật dàn ngang 2 tab cho Mobile */
+            /* Dàn ngang 2 tab cho Mobile tránh rớt dòng */
             .tabs { flex-direction: row; gap: 8px; flex-wrap: nowrap; }
-            .tab-btn { flex-direction: column; font-size: 11px; padding: 12px 5px; gap: 6px; text-align: center; border-radius: 8px; }
+            .tab-btn { flex-direction: column; font-size: 12px; padding: 10px 5px; gap: 6px; text-align: center; border-radius: 8px; }
             .tab-btn i { font-size: 18px; margin: 0; }
             
             .visual-header { padding: 20px 15px; text-align: center; flex-direction: column; }
-            .visual-header h2 { font-size: 22px; }
+            .visual-header h2 { font-size: 20px; }
             .visual-header .card-badge { position: relative; display: inline-block; top: 0; right: 0; margin-bottom: 10px; }
 
-            .main-heading { font-size: 16px; padding: 10px 15px; display: block; text-align: center; }
-            .sub-heading { font-size: 18px; padding: 8px 10px; text-align: left; }
+            .main-heading { font-size: 15px; padding: 10px 15px; display: block; text-align: center; }
+            .sub-heading { font-size: 16px; padding: 8px 10px; text-align: left; }
             
             .card { padding: 15px; }
             .card-badge { right: 10px; font-size: 10px; padding: 3px 10px; top: -10px; }
@@ -446,14 +456,15 @@
 
             .note-box { padding: 12px 15px; font-size: 13px; }
             
-            /* Responsive tables within table-responsive wrapper */
+            /* Responsive tables adjusted for Mobile */
+            .promo-table { min-width: 450px; /* Giảm độ cứng min-width trên bảng ưu đãi */ }
             .info-table td, .info-table th { padding: 10px 12px; font-size: 13px; }
-            .info-table td:first-child { width: 100px; }
+            .info-table td:first-child { width: 90px; }
             .promo-table th { padding: 12px 10px; font-size: 12px; }
             .promo-table td { padding: 12px 10px; font-size: 13px; }
             
-            .discount-val { font-size: 15px; }
-            .discount-val.highlight { font-size: 16px; }
+            .discount-val { font-size: 14px; }
+            .discount-val.highlight { font-size: 15px; }
             .badge-new, .badge-all { padding: 4px 8px; font-size: 10px; }
             
             /* Adjust flex layout inside cards for mobile */
