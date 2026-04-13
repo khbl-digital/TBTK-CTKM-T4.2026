@@ -43,7 +43,7 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* Banner Header Mới */
+        /* Banner Header */
         header {
             background-image: url('1972x640-noscheme.jpg');
             background-size: cover;
@@ -55,7 +55,7 @@
             justify-content: center;
             position: relative;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .header-text-box {
@@ -91,6 +91,78 @@
             letter-spacing: 1px;
         }
 
+        .tab-instruction {
+            text-align: center;
+            color: var(--pnj-navy);
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        /* Navigation Tabs */
+        .tabs-container {
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 15px;
+            background: transparent;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 18px 10px;
+            border: 2px solid transparent;
+            background-color: #ffffff;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #002244;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .tab-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Active state cho các Tab bình thường */
+        .tab-btn.active {
+            border-color: #002244;
+            box-shadow: 0 8px 20px rgba(0, 34, 68, 0.15);
+        }
+
+        /* Styling riêng cho Tab Sinh Nhật được Highlight */
+        .tab-btn.highlight-tab {
+            background-color: #002244;
+            background-image: linear-gradient(135deg, #001f40 0%, #003274 100%);
+            color: #ffffff;
+            border: none;
+        }
+
+        .tab-btn.highlight-tab:hover {
+            filter: brightness(1.1);
+        }
+
+        .tab-btn.highlight-tab.active {
+            background-image: linear-gradient(135deg, #00152b 0%, #002a63 100%);
+            border: 2px solid #D4AF37;
+            box-shadow: 0 8px 20px rgba(0, 34, 68, 0.3);
+        }
+
         /* Main Content Area */
         main {
             max-width: 1200px;
@@ -98,48 +170,44 @@
             padding: 0 20px 60px;
         }
 
-        /* Card Layouts */
-        .section-title {
-            font-size: 26px;
-            font-weight: 800;
-            color: #002244;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid rgba(212, 175, 55, 0.5);
-            display: inline-block;
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
         }
 
-        .highlight-heading {
-            font-size: 22px;
-            font-weight: 800;
-            color: #D4AF37;
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tiêu đề & Sub-heading */
+        .main-heading {
             background-color: #002244;
-            background-image: linear-gradient(135deg, #002244 0%, #003274 100%);
+            color: #D4AF37;
             padding: 12px 25px;
             border-radius: 8px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 10px rgba(0,34,68,0.15);
-            margin-bottom: 20px;
+            display: inline-block;
+            font-size: 20px;
+            font-weight: 800;
             text-transform: uppercase;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .sub-heading {
-            font-size: 18px;
+            font-size: 24px;
             font-weight: 800;
             color: #003274;
-            background-color: #eaf2fa;
-            background-image: linear-gradient(to right, #e0ebf5, #f0f5fa);
-            border-left: 4px solid #D4AF37;
-            padding: 10px 20px;
-            border-radius: 4px 8px 8px 4px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            border-left: 6px solid #D4AF37;
+            padding: 5px 0 5px 15px;
             margin-bottom: 20px;
             text-transform: uppercase;
-            box-shadow: 0 2px 5px rgba(0,34,68,0.05);
+            display: flex;
+            align-items: center;
         }
         
         .saledeal-tag {
@@ -151,7 +219,7 @@
             border: 1px dashed #fca5a5;
             padding: 4px 10px;
             border-radius: 6px;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 700;
             margin-bottom: 15px;
             text-transform: uppercase;
@@ -164,7 +232,11 @@
             border-color: #D4AF37;
         }
 
-        /* Bảng hiển thị thông tin */
+        /* Layouts */
+        .split-layout { display: grid; grid-template-columns: 2.3fr 1.1fr; gap: 25px; align-items: start; margin-bottom: 40px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 40px; }
+
+        /* Bảng hiển thị thông tin chung */
         .info-table {
             width: 100%;
             border-collapse: collapse;
@@ -173,21 +245,9 @@
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid #e2e8f0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
-        
-        .info-table td {
-            padding: 14px 18px;
-            border-bottom: 1px solid #e2e8f0;
-            font-size: 15px;
-            color: var(--text-main);
-            vertical-align: middle;
-        }
-        
-        .info-table tr:last-child td {
-            border-bottom: none;
-        }
-        
+        .info-table td, .info-table th { padding: 14px 18px; border-bottom: 1px solid #e2e8f0; font-size: 15px; vertical-align: middle; }
+        .info-table th { background-color: #f8fafc; font-weight: 700; color: #002244; border-right: 1px solid #e2e8f0; }
         .info-table td:first-child {
             font-weight: 700;
             color: #002244;
@@ -196,68 +256,47 @@
             border-right: 1px solid #e2e8f0;
         }
 
-        .split-layout { display: grid; grid-template-columns: 2.4fr 1fr; gap: 25px; align-items: start; margin-bottom: 40px; }
-
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 40px; }
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px; }
-        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 40px; }
-        
-        /* Gold Card Grid Layouts */
-        .gold-card {
-            background-color: #d4af37;
-            background-image: linear-gradient(135deg, #fdf1cd 0%, #d4af37 50%, #b38519 100%);
+        /* Bảng Ưu Đãi Code (Promo Table) */
+        .promo-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
             border-radius: 12px;
-            padding: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+        .promo-table th {
+            background-color: #002244;
+            color: #D4AF37;
+            padding: 16px;
             text-align: center;
-            color: #002244;
-            box-shadow: 0 8px 15px rgba(212, 175, 55, 0.25);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            border: 1px solid rgba(255,255,255,0.6);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            min-height: 100px;
-            z-index: 1;
-        }
-
-        .gold-card:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 12px 20px rgba(212, 175, 55, 0.35);
-        }
-
-        .gold-card .offer-title {
-            font-size: 24px;
-            font-weight: 800;
+            font-size: 15px;
             text-transform: uppercase;
-            margin-bottom: 5px;
-            line-height: 1.2;
-            color: #002244;
+            border-right: 1px solid rgba(255,255,255,0.1);
         }
-
-        .gold-card .offer-sub {
-            font-size: 13px;
-            font-weight: 600;
-            color: #002244;
+        .promo-table td {
+            padding: 16px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: middle;
+            font-size: 15px;
         }
-
-        .gold-card .offer-badge {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background-color: #ef4444; 
-            color: #ffffff;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 700;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-            z-index: 10;
-            white-space: nowrap;
-            font-family: 'Montserrat', sans-serif;
+        .promo-table tr:hover { background-color: #fcf9f0; }
+        
+        .discount-item {
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #f1f5f9;
         }
+        .discount-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+        .discount-val { font-weight: 800; color: #002244; font-size: 17px; display: block; }
+        .discount-val.highlight { color: #ef4444; font-size: 20px; }
+        .discount-cond { font-size: 13px; color: #64748b; font-weight: 500; display: block; margin-top: 2px; }
 
-        /* Thẻ cơ bản */
+        .badge-new { background-color: #ef4444; color: white; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; display: inline-block; white-space: nowrap; }
+        .badge-all { background-color: #002244; color: white; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; display: inline-block; white-space: nowrap; }
+
+        /* Card Layouts */
         .card {
             background-color: #ffffff;
             border-radius: 12px;
@@ -270,9 +309,6 @@
 
         .card.highlight {
             border-top: 4px solid #D4AF37;
-            background-color: #fdfdfc;
-            background-image: linear-gradient(to bottom, #fdfdfc 0%, #ffffff 100%);
-            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.1);
         }
 
         .card-badge {
@@ -308,10 +344,9 @@
         .card ul li { margin-bottom: 8px; padding-left: 20px; position: relative; font-size: 15px; }
         .card ul li::before { content: '•'; color: #D4AF37; position: absolute; left: 0; top: 0; font-weight: bold; font-size: 18px; }
 
-        .highlight-text { color: #b38519; font-weight: 700; }
         .navy-text { color: #002244; font-weight: 700; }
+        .highlight-text { color: #b38519; font-weight: 700; }
 
-        /* Note box */
         .note-box {
             background-color: #f8fafc;
             border-left: 4px solid #002244;
@@ -321,7 +356,6 @@
             margin-top: 20px;
         }
 
-        /* Tab footer */
         .tab-footer {
             margin-top: 40px;
             padding-top: 20px;
@@ -334,7 +368,6 @@
         .tab-footer a { color: #003274; font-weight: 700; text-decoration: none; transition: color 0.3s ease; }
         .tab-footer a:hover { text-decoration: underline; color: #002244; }
 
-        /* Banner Tab 1 */
         .visual-header {
             background-color: #ffffff;
             background-image: linear-gradient(135deg, #ffffff 0%, #e0ebf5 100%);
@@ -351,23 +384,7 @@
             overflow: hidden;
         }
         
-        .visual-header h2 {
-            font-size: 34px; 
-            color: #002244; 
-            margin-bottom: 10px;
-        }
-
-        .visual-header::after {
-            content: '\f06b';
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            position: absolute;
-            right: 20px;
-            top: -20px;
-            font-size: 150px;
-            color: rgba(212, 175, 55, 0.1);
-            transform: rotate(-15deg);
-        }
+        .visual-header h2 { font-size: 34px; color: #002244; margin-bottom: 10px; }
 
         .img-placeholder {
             width: 100%;
@@ -381,24 +398,10 @@
             overflow: hidden;
         }
 
-        .blue-card {
-            background-color: #eaf2fa;
-            background-image: linear-gradient(180deg, #eff5fc 0%, #d4e3f1 100%);
-            border: 1px solid #ffffff;
-            color: #002244;
-        }
-
-        .section-divider {
-            border: none;
-            border-top: 2px dashed #cbd5e1;
-            margin: 60px 0;
-        }
-
-        /* Responsive */
         @media (max-width: 900px) {
             .split-layout { grid-template-columns: 1fr; }
-            .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 20px; } 
-            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .tabs { flex-direction: column; }
             header { height: 200px; padding: 10px; }
             .header-text-box { padding: 15px 20px; }
             .header-title { font-size: 24px; }
@@ -408,7 +411,7 @@
 </head>
 <body>
 
-    <!-- Header Banner sử dụng ảnh 1972x640-noscheme.jpg -->
+    <!-- Header Banner -->
     <header>
         <div class="header-text-box">
             <div class="header-title">
@@ -418,13 +421,30 @@
         </div>
     </header>
 
+    <!-- Ghi chú cho TVV -->
+    <p class="tab-instruction">
+        <i class="fa-solid fa-hand-point-down" style="font-size: 18px;"></i> Vui lòng nhấp chọn các Tab bên dưới để xem chi tiết chương trình
+    </p>
+
+    <!-- Tabs Navigation -->
+    <div class="tabs-container">
+        <div class="tabs">
+            <button class="tab-btn highlight-tab active" onclick="openTab(event, 'tab1')">
+                <i class="fa-solid fa-cake-candles" style="color: #D4AF37;"></i> Sinh Nhật PNJ 38 Năm
+            </button>
+            <button class="tab-btn" onclick="openTab(event, 'tab2')">
+                <i class="fa-solid fa-tags" style="color: #D4AF37;"></i> Chương Trình AWO
+            </button>
+        </div>
+    </div>
+
     <main>
-        <!-- PHẦN 1: SINH NHẬT -->
-        <div class="content-section">
+        <!-- TAB 1: SINH NHẬT -->
+        <div id="tab1" class="tab-content active">
             <div class="visual-header">
                 <div style="position: relative; z-index: 2;">
-                    <div class="card-badge" style="position: static; display: inline-block; margin-bottom: 15px;">10/04 - 03/05/2026</div>
-                    <h2>1. Sinh Nhật PNJ 38 Năm trên ZMP (Zalo mini program)</h2>
+                    <div class="card-badge" style="position: static; display: inline-block; margin-bottom: 15px;">13/04 - 03/05/2026</div>
+                    <h2>Sinh Nhật PNJ 38 Năm trên ZMP (Zalo mini program)</h2>
                     <div style="margin-top: 10px;">
                         <span style="font-size: 15px; font-weight: 600; color: #D4AF37; background-color: #002244; padding: 10px 18px; border-radius: 6px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.1); max-width: 100%; line-height: 1.5;">
                             Hoạt động phát ưu đãi & quà tặng của PNJ trên nền tảng Zalo để khai thác khách hàng mới bên ngoài cửa hàng PNJ
@@ -433,124 +453,134 @@
                 </div>
             </div>
 
-            <!-- Thêm hình ảnh ZNS_-T1.png -->
+            <!-- Hình ảnh ZNS_-T1.png -->
             <div style="margin-bottom: 35px; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,34,68,0.08);">
                 <img src="https://raw.githubusercontent.com/khbl-digital/target/refs/heads/main/ZNS_-T1.png" alt="ZNS Banner" style="width: 100%; height: auto; display: block;">
             </div>
 
             <!-- Cách thức tham gia -->
-            <div class="highlight-heading">
+            <div class="main-heading">
                 CÁCH THỨC THAM GIA:
             </div>
             <div class="card" style="margin-bottom: 35px; padding: 20px 25px;">
                 <ul style="margin-bottom: 0;">
-                    <li><strong>Bước 1:</strong> Khách hàng quét mã QR tại các Event, Activation của PNJ, từ đối tác của PNJ hoặc từ link trên các kênh truyền thông Online để tham gia hoạt động</li>
+                    <li><strong>Bước 1:</strong> Khách hàng quét mã QR tại các Event, Activation của PNJ, hoặc từ link trên các kênh truyền thông Online để tham gia hoạt động</li>
                     <li><strong>Bước 2:</strong> Nhập thông tin & làm theo các bước hướng dẫn trên ứng dụng.</li>
                     <li><strong>Bước 3:</strong> Mã ưu đãi sẽ được lưu trên ví quà tặng của khách hàng.</li>
                 </ul>
             </div>
             
-            <!-- Hoạt động 1 -->
+            <!-- HOẠT ĐỘNG 1: Tham Gia Nhận Ưu Đãi -->
             <div class="sub-heading">
-                1. Sưu Tầm Mảnh Ghép Nhận Quà Vàng
-            </div>
-            <div class="card highlight" style="margin-bottom: 40px;">
-                <p style="margin-bottom: 15px; font-size: 14px;">Hoạt động tương tác trên ZMP giúp khách hàng thu thập mảnh ghép đổi quà giá trị.</p>
-                
-                <!-- Format dàn thành bảng cho Sưu tầm mảnh ghép -->
-                <table class="info-table">
-                    <tbody>
-                        <tr>
-                            <td>Điều kiện</td>
-                            <td>Thu thập đủ 04 mảnh ghép.</td>
-                        </tr>
-                        <tr>
-                            <td>Quà tặng</td>
-                            <td><span class="highlight-text" style="font-size: 16px;">Đồng vàng 41,6% (10K) PNJ ❤️ HELLO KITTY May mắn, mã sản phẩm: GZ0000Y001112</span></td>
-                        </tr>
-                        <tr>
-                            <td>Số lượng</td>
-                            <td>Duy nhất 03 giải trong chương trình.</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="note-box" style="margin-top: 10px; font-size: 13px;">
-                    * Không áp dụng cho NV nội bộ. Mỗi KH nhận 1 thẻ, không quy tiền mặt.
-                </div>
-            </div>
-
-            <!-- Hoạt động 2 -->
-            <div class="sub-heading" style="width: 100%; justify-content: center; margin-bottom: 25px;">
-                2. Tham Gia Nhận Ưu Đãi / Quà Tặng
+                1. Tham Gia Nhận Ưu Đãi / Quà Tặng
             </div>
             
             <div class="split-layout">
-                <!-- Layout bên trái: Mã ưu đãi -->
+                <!-- Layout bên trái: Bảng Mã ưu đãi -->
                 <div>
                     <div class="saledeal-tag" style="margin-bottom: 15px;"><i class="fa-solid fa-barcode"></i> SALEDEAL 20: 70006695</div>
                     
-                    <div class="grid-3" style="gap: 15px; margin-bottom: 0;">
-                        <div class="gold-card">
-                            <div class="offer-badge">KH MỚI</div>
-                            <div class="offer-title">MÃ 9%</div>
-                            <div class="offer-sub">Tối đa 1.5 triệu</div>
-                        </div>
-                        <div class="gold-card">
-                            <div class="offer-badge" style="background-color: #ef4444; color: #ffffff;">KH MỚI</div>
-                            <div class="offer-title">MÃ 360K</div>
-                            <div class="offer-sub">Đơn từ 4 triệu</div>
-                        </div>
-                        <div class="gold-card">
-                            <div class="offer-badge" style="background-color: #002244; color: #ffffff;">MỚI & CŨ</div>
-                            <div class="offer-title">MÃ 1.2 TR</div>
-                            <div class="offer-sub">Đơn từ 15 triệu</div>
-                        </div>
-                        <div class="gold-card">
-                            <div class="offer-badge" style="background-color: #002244; color: #ffffff;">MỚI & CŨ</div>
-                            <div class="offer-title">MÃ 1.6 TR</div>
-                            <div class="offer-sub">Đơn từ 20 triệu</div>
-                        </div>
-                        
-                        <div class="gold-card">
-                            <div class="offer-badge" style="background-color: #002244; color: #ffffff;">MỚI & CŨ</div>
-                            <div class="offer-title">MÃ 800K</div>
-                            <div class="offer-sub">Đơn từ 10 triệu</div>
-                        </div>
-                        <div class="gold-card">
-                            <div class="offer-badge" style="background-color: #002244; color: #ffffff;">MỚI & CŨ</div>
-                            <div class="offer-title">MÃ 100K</div>
-                            <div class="offer-sub">Bạc/HKCC từ 850K</div>
-                        </div>
-                        <div class="gold-card">
-                            <div class="offer-badge" style="background-color: #002244; color: #ffffff;">MỚI & CŨ</div>
-                            <div class="offer-title">MÃ 200K</div>
-                            <div class="offer-sub">Bạc/HKCC từ 1.7tr</div>
-                        </div>
-                        <div class="gold-card">
-                            <div class="offer-badge" style="background-color: #002244; color: #ffffff;">MỚI & CŨ</div>
-                            <div class="offer-title">MÃ 5%</div>
-                            <div class="offer-sub">TS Ý/Dây chuyền</div>
-                        </div>
-                        
-                        <div class="gold-card">
-                            <div class="offer-badge" style="background-color: #002244; color: #ffffff;">MỚI & CŨ</div>
-                            <div class="offer-title">MÃ 12%</div>
-                            <div class="offer-sub">STYLE by PNJ</div>
-                        </div>
-                        <div class="gold-card">
-                            <div class="offer-badge" style="background-color: #002244; color: #ffffff;">MỚI & CŨ</div>
-                            <div class="offer-title">MÃ 10%</div>
-                            <div class="offer-sub">Hello Kitty</div>
-                        </div>
-                        <div class="gold-card">
-                            <div class="offer-badge" style="background-color: #002244; color: #ffffff;">MỚI & CŨ</div>
-                            <div class="offer-title">MÃ 14%</div>
-                            <div class="offer-sub">Disney, Doraemon...</div>
-                        </div>
-                    </div>
+                    <table class="promo-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 40%; text-align: left; border-right: 1px solid rgba(255,255,255,0.1);">NHÃN HÀNG / CHẤT LIỆU</th>
+                                <th style="width: 40%; border-right: 1px solid rgba(255,255,255,0.1);">MÃ ƯU ĐÃI</th>
+                                <th style="width: 20%;">ĐỐI TƯỢNG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Khách hàng mới & Cũ block -->
+                            <tr>
+                                <td rowspan="2" style="font-weight: 600; color: #334155; border-right: 1px dashed #cbd5e1;">Vàng/Platinum, Bạc, Hợp kim cao cấp, Đồng hồ</td>
+                                <td style="text-align: center; border-right: 1px dashed #cbd5e1;">
+                                    <div class="discount-item">
+                                        <span class="discount-val highlight">GIẢM 9%</span>
+                                        <span class="discount-cond">(Tối đa 1.5tr)</span>
+                                    </div>
+                                    <div class="discount-item">
+                                        <span class="discount-val">GIẢM 360K</span>
+                                        <span class="discount-cond">(Đơn từ 4tr)</span>
+                                    </div>
+                                </td>
+                                <td style="text-align: center;"><span class="badge-new">KH MỚI</span></td>
+                            </tr>
+                            <!-- Khách hàng chung -->
+                            <tr>
+                                <td style="text-align: center; border-right: 1px dashed #cbd5e1;">
+                                    <div class="discount-item">
+                                        <span class="discount-val">GIẢM 800K</span>
+                                        <span class="discount-cond">(Đơn từ 10tr)</span>
+                                    </div>
+                                    <div class="discount-item">
+                                        <span class="discount-val">GIẢM 1.2 TR</span>
+                                        <span class="discount-cond">(Đơn từ 15tr)</span>
+                                    </div>
+                                    <div class="discount-item">
+                                        <span class="discount-val">GIẢM 1.6 TR</span>
+                                        <span class="discount-cond">(Đơn từ 20tr)</span>
+                                    </div>
+                                </td>
+                                <td style="text-align: center;"><span class="badge-all">MỚI & CŨ</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600; color: #334155; border-right: 1px dashed #cbd5e1;">Bạc / Hợp kim cao cấp</td>
+                                <td style="text-align: center; border-right: 1px dashed #cbd5e1;">
+                                    <div class="discount-item">
+                                        <span class="discount-val">GIẢM 100K</span>
+                                        <span class="discount-cond">(Từ 850k)</span>
+                                    </div>
+                                    <div class="discount-item">
+                                        <span class="discount-val">GIẢM 200K</span>
+                                        <span class="discount-cond">(Từ 1.7tr)</span>
+                                    </div>
+                                </td>
+                                <td style="text-align: center;"><span class="badge-all">MỚI & CŨ</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600; color: #334155; border-right: 1px dashed #cbd5e1;">Trang sức Ý, Dây chuyền Vàng/Platinum</td>
+                                <td style="text-align: center; border-right: 1px dashed #cbd5e1;">
+                                    <div class="discount-item">
+                                        <span class="discount-val">GIẢM 5%</span>
+                                        <span class="discount-cond">(Tối đa 1.5tr)</span>
+                                    </div>
+                                </td>
+                                <td style="text-align: center;"><span class="badge-all">MỚI & CŨ</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600; color: #334155; border-right: 1px dashed #cbd5e1;">STYLE by PNJ <span style="font-weight: 500; font-size: 13px; color: #64748b; display: block; margin-top: 4px;">(chất liệu Bạc/HKCC/Thau)</span></td>
+                                <td style="text-align: center; border-right: 1px dashed #cbd5e1;">
+                                    <div class="discount-item">
+                                        <span class="discount-val">GIẢM 12%</span>
+                                        <span class="discount-cond">(Tối đa 1.5tr)</span>
+                                    </div>
+                                </td>
+                                <td style="text-align: center;"><span class="badge-all">MỚI & CŨ</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600; color: #334155; border-right: 1px dashed #cbd5e1;">PNJ Hello Kitty <span style="font-weight: 500; font-size: 13px; color: #64748b; display: block; margin-top: 4px;">(chất liệu Vàng/Platinum/Bạc/HKCC/Thau)</span></td>
+                                <td style="text-align: center; border-right: 1px dashed #cbd5e1;">
+                                    <div class="discount-item">
+                                        <span class="discount-val">GIẢM 10%</span>
+                                        <span class="discount-cond">(Tối đa 1.5tr)</span>
+                                    </div>
+                                </td>
+                                <td style="text-align: center;"><span class="badge-all">MỚI & CŨ</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600; color: #334155; border-right: 1px dashed #cbd5e1;">TT.KDQT & trendy collection <span style="font-weight: 500; font-size: 13px; color: #64748b; display: block; margin-top: 4px;">(chất liệu Bạc/HKCC/Thau)</span></td>
+                                <td style="text-align: center; border-right: 1px dashed #cbd5e1;">
+                                    <div class="discount-item">
+                                        <span class="discount-val">GIẢM 14%</span>
+                                        <span class="discount-cond">(Tối đa 1.5tr)</span>
+                                    </div>
+                                </td>
+                                <td style="text-align: center;"><span class="badge-all">MỚI & CŨ</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
                     <div class="note-box" style="margin-top: 20px;">
-                        <strong>Điều kiện:</strong> Mã dùng được sau 30p nhận tin. ĐƯỢC gộp Cổng thanh toán & Trả góp. KHÔNG gộp KM khác/Thẻ VIP.
+                        <strong>Điều kiện chung:</strong> Mã dùng được sau 30p nhận tin. ĐƯỢC gộp Cổng thanh toán & Trả góp. KHÔNG gộp KM khác/Thẻ VIP.
                     </div>
                 </div>
 
@@ -567,11 +597,11 @@
                         <table class="info-table" style="margin-bottom: 10px; box-shadow: none; border: 1px solid #e2e8f0;">
                             <tbody>
                                 <tr>
-                                    <td style="width: 70px; padding: 12px 10px;">Quà 1</td>
+                                    <td style="width: 70px; padding: 12px 10px; background: transparent; border-right: none; font-weight: bold;">Quà 1</td>
                                     <td style="padding: 12px 10px; font-size: 14px;">Thẻ Dát Vàng Cinnamoroll trị giá <span class="navy-text">500.000Đ</span> (30 phần).</td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 70px; padding: 12px 10px;">Quà 2</td>
+                                    <td style="width: 70px; padding: 12px 10px; background: transparent; border-right: none; font-weight: bold;">Quà 2</td>
                                     <td style="padding: 12px 10px; font-size: 14px;">10 Mặt Nạ Giấy TFS (20 phần).</td>
                                 </tr>
                             </tbody>
@@ -583,14 +613,52 @@
                     </div>
                 </div>
             </div>
+
+            <!-- HOẠT ĐỘNG 2: Sưu Tầm Mảnh Ghép -->
+            <div class="sub-heading">
+                2. Sưu Tầm Mảnh Ghép Nhận Quà Vàng
+            </div>
+            <div class="card highlight" style="margin-bottom: 40px;">
+                <p style="margin-bottom: 15px; font-size: 14px;">Khách hàng tham gia hoạt động sưu tầm mảnh ghép, nếu sưu tầm đủ 4 mảnh ghép sẽ nhận được quà tặng như sau:</p>
+                
+                <table class="info-table">
+                    <tbody>
+                        <tr>
+                            <td>Điều kiện</td>
+                            <td>Thu thập đủ 04 mảnh ghép.</td>
+                        </tr>
+                        <tr>
+                            <td>Quà tặng</td>
+                            <td>
+                                <span class="highlight-text" style="font-size: 16px;">Đồng vàng 41,6% (10K) PNJ ❤️ HELLO KITTY May mắn, mã sản phẩm: GZ0000Y001112</span>
+                                <div style="margin-top: 12px;">
+                                    <img src="https://github.com/khbl-digital/CTKMT4/blob/main/Đồng%20vàng%20Hello%20Kitty.png?raw=true" alt="Đồng vàng Hello Kitty" style="max-height: 90px; border-radius: 8px; box-shadow: 0 3px 8px rgba(0,0,0,0.1);">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Số lượng</td>
+                            <td>03 giải.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="note-box" style="margin-top: 10px; font-size: 13px;">
+                    * Không áp dụng cho NV nội bộ. Mỗi khách hàng nhận 01 quà tặng.
+                </div>
+            </div>
+
+            <div class="tab-footer">
+                Chi tiết xem thêm tại <br>
+                <a href="https://eoffice.pnj.com.vn/dms/SitePages/view-file.aspx?IID=11284&listid=17ad0760-f555-4c24-97fc-0d8b77deb923&idf=&source=https://eoffice.pnj.com.vn/dms&IsDlg=1" target="_blank" style="font-size: 18px; margin-top: 10px; display: inline-block;">
+                    <i class="fa-solid fa-file-word"></i> Thông báo CTKM Online tháng 04.2026
+                </a>
+            </div>
         </div>
 
-        <hr class="section-divider">
-
-        <!-- PHẦN 2: CHƯƠNG TRÌNH AWO -->
-        <div class="content-section">
-            <h2 class="section-title">2. Chương Trình AWO</h2>
-
+        <!-- TAB 2: CHƯƠNG TRÌNH AWO -->
+        <div id="tab2" class="tab-content">
+            
             <div class="grid-2">
                 <div class="card highlight" style="text-align: center; border-width: 3px;">
                     <div class="card-badge">08/04 - 30/04</div>
@@ -612,7 +680,6 @@
                         <strong>Lưu ý:</strong> Chỉ áp dụng chọn hàng CÓ SẴN (đủ size/ni). KHÔNG áp dụng đặt hàng lại. KHÔNG gộp KM khác/Thẻ VIP.
                     </div>
                     
-                    <!-- Hình ảnh Tabsale -->
                     <div style="border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
                         <img src="https://raw.githubusercontent.com/khbl-digital/target/refs/heads/main/7dd9202a-986a-4dba-9602-e9a56f16df97.jpg" alt="Danh sách chi tiết ưu đãi Tabsale" style="width: 100%; height: auto; display: block;">
                     </div>
@@ -655,12 +722,14 @@
                 <div class="card" style="background-color: #002244; border: none; padding: 30px 25px;">
                     <div class="card-badge" style="background: linear-gradient(to right, #f26552, #e53e3e); color: #ffffff; top: -15px; font-size: 13px; font-weight: 800; padding: 6px 18px; text-transform: uppercase;">15/04 - 30/06</div>
                     <h3 style="color: #D4AF37; font-family: 'Playfair Display', serif; font-size: 26px; margin-bottom: 12px; font-weight: 700;">4/ Web engagement</h3>
-                    <div class="saledeal-tag dark" style="background: transparent; border-color: #D4AF37; color: #D4AF37; margin-bottom: 15px;"><i class="fa-solid fa-barcode"></i> SALEDEAL 20: 70006697</div>
                     <p style="color: #cbd5e1; font-size: 15px; margin-bottom: 25px;">Khách mới lần đầu giao dịch, điền form trên popup Website nhận mã ngay. (HSD 15 ngày)</p>
                     <div class="huge-discount" style="text-align: center; margin-bottom: 5px; font-size: 58px; color: #D4AF37;">GIẢM 9%</div>
                     <p style="text-align: center; color: #ffffff; font-weight: 700; font-size: 16px;">Tối đa 1.500.000Đ</p>
                     
-                    <!-- Hình ảnh KHM.png -->
+                    <div style="text-align: center; margin-top: 15px;">
+                        <div class="saledeal-tag dark" style="background: transparent; border-color: #D4AF37; color: #D4AF37; margin-bottom: 0;"><i class="fa-solid fa-barcode"></i> SALEDEAL 20: 70006697</div>
+                    </div>
+
                     <div style="margin-top: 25px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
                         <img src="https://raw.githubusercontent.com/khbl-digital/target/refs/heads/main/KHM.png" alt="Khách hàng mới" style="width: 100%; height: auto; display: block;">
                     </div>
@@ -670,35 +739,71 @@
                     <div class="card-badge" style="background: linear-gradient(135deg, #fdf1cd 0%, #d4af37 100%); color: #002244; top: -15px; font-size: 13px; font-weight: 800; padding: 6px 18px; text-transform: uppercase;">15/04 - 30/04</div>
                     <h3 style="color: #002244; font-family: 'Playfair Display', serif; font-size: 26px; margin-bottom: 12px; font-weight: 700;">5/ Exit intent</h3>
                     <p style="color: #475569; font-size: 15px; margin-bottom: 20px;">Popup hiện ra khi khách có ý định thoát trang web. (HSD 30 ngày)</p>
-                    <div class="grid-2" style="gap: 15px; margin-bottom: 0;">
-                        <div class="gold-card" style="min-height: 110px; padding: 20px 10px;">
-                            <div class="offer-badge" style="background-color: #002244; color: #ffffff; top: -12px;">KH CŨ</div>
-                            <div class="offer-title" style="font-size: 26px; margin-bottom: 5px;">MÃ 8%</div>
-                            <div style="margin: 0 auto 8px;">
-                                <span style="background-color: rgba(255,255,255,0.6); color: #002244; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; border: 1px solid rgba(0,34,68,0.2);"><i class="fa-solid fa-barcode" style="margin-right: 4px;"></i>SALEDEAL 20: 70006699</span>
-                            </div>
-                            <div class="offer-sub" style="font-size: 14px;">Tối đa 1.5 triệu</div>
-                        </div>
-                        <div class="gold-card" style="min-height: 110px; padding: 20px 10px;">
-                            <div class="offer-badge" style="background-color: #ef4444; color: #ffffff; top: -12px;">KH MỚI</div>
-                            <div class="offer-title" style="font-size: 26px; margin-bottom: 5px;">MÃ 9%</div>
-                            <div style="margin: 0 auto 8px;">
-                                <span style="background-color: rgba(255,255,255,0.6); color: #002244; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; border: 1px solid rgba(0,34,68,0.2);"><i class="fa-solid fa-barcode" style="margin-right: 4px;"></i>SALEDEAL 20: 70006698 </span>
-                            </div>
-                            <div class="offer-sub" style="font-size: 14px;">Tối đa 1.5 triệu</div>
-                        </div>
-                    </div>
+                    
+                    <table class="promo-table" style="box-shadow: none;">
+                        <thead>
+                            <tr>
+                                <th style="width: 50%; text-align: center;">Mã Ưu Đãi</th>
+                                <th style="width: 50%; text-align: center;">Đối tượng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="text-align: center; border-right: none;">
+                                    <div class="discount-item" style="border-bottom: none;">
+                                        <span class="discount-val">GIẢM 8%</span>
+                                        <span class="discount-cond">(Tối đa 1.5tr)</span>
+                                    </div>
+                                    <div style="margin-top: 8px;">
+                                        <span style="background-color: #f8fafc; color: #ef4444; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; border: 1px dashed #fca5a5;"><i class="fa-solid fa-barcode" style="margin-right: 4px;"></i>SALEDEAL 20: 70006699 </span>
+                                    </div>
+                                </td>
+                                <td style="text-align: center;"><span class="badge-all" style="background-color: #64748b;">KH CŨ</span></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; border-right: none;">
+                                    <div class="discount-item" style="border-bottom: none;">
+                                        <span class="discount-val highlight" style="font-size: 18px;">GIẢM 9%</span>
+                                        <span class="discount-cond">(Tối đa 1.5tr)</span>
+                                    </div>
+                                    <div style="margin-top: 8px;">
+                                        <span style="background-color: #f8fafc; color: #ef4444; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; border: 1px dashed #fca5a5;"><i class="fa-solid fa-barcode" style="margin-right: 4px;"></i>SALEDEAL 20: 70006698</span>
+                                    </div>
+                                </td>
+                                <td style="text-align: center;"><span class="badge-new">KH MỚI</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
             <div class="tab-footer">
                 Chi tiết xem thêm tại <br>
-                <a href="https://pnjcomvn-my.sharepoint.com/:w:/r/personal/hau_hp_pnj_com_vn/_layouts/15/Doc.aspx?sourcedoc=%7B9937F117-E203-486E-94C3-E823A85230A2%7D&file=TH%C3%94NG-B%C3%81O-CTKM-ONLINE-TH%C3%81NG-04-2026.docx&action=default&mobileredirect=true" target="_blank" style="font-size: 18px; margin-top: 10px; display: inline-block;">
+                <a href="https://eoffice.pnj.com.vn/dms/SitePages/view-file.aspx?IID=11284&listid=17ad0760-f555-4c24-97fc-0d8b77deb923&idf=&source=https://eoffice.pnj.com.vn/dms&IsDlg=1" target="_blank" style="font-size: 18px; margin-top: 10px; display: inline-block;">
                     <i class="fa-solid fa-file-word"></i> Thông báo CTKM Online tháng 04.2026
                 </a>
             </div>
         </div>
     </main>
 
+    <script>
+        function openTab(evt, tabId) {
+            // Hide all tab contents
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            // Remove active class from all buttons
+            const tabBtns = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tabBtns.length; i++) {
+                tabBtns[i].classList.remove("active");
+            }
+
+            // Show current tab and add active class to clicked button
+            document.getElementById(tabId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
 </body>
 </html>
